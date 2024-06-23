@@ -1,0 +1,46 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("@YTPaullennox script", "Ocean")
+
+local Player = Window:NewTab("Player")
+local PlayerSection = Player:NewSection("Player")
+
+PlayerSection:NewButton("Fly", "FLY !!!", function()
+    print("Fly")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+end)
+
+
+PlayerSection:NewSlider("Speed", "Player speed", 600, 16, function(s) -- 600(MaxValue) | 16 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+
+
+local Aimbot = Window:NewTab("Aimbot")
+local AimbotSection = Aimbot:NewSection("Aimbot")
+
+AimbotSection:NewButton("DA hod (log Z)", "log z", function()
+    print("da hod")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/drissez1/Lock/main/Lock"))()
+end)
+
+AimbotSection:NewButton("Aimbot", "Aimbot for all gams", function()
+    print("aimbot")
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/AirHub/main/AirHub.lua"))()
+end)
+
+
+PlayerSection:NewButton("Antie aim lock", "antie)", function()
+    print("Antie lock")
+ getgenv().Sky = true --disable or enable the antilock
+getgenv().SkyAmount = -50 --how far it should be
+ 
+game:GetService("RunService").heartbeat:Connect(function()
+    if getgenv().Sky ~= false then 
+    local vel = game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,      getgenv().SkyAmount,0) 
+    game:GetService("RunService").RenderStepped:Wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = vel
+    end 
+end)
+end)
